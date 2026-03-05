@@ -5,199 +5,229 @@
 /* Tipografía general */
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    background: linear-gradient(135deg,#5f7cff,#7a4dff);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-/* luz decorativa fondo */
-body::before{
-    content:"";
-    position:fixed;
-    width:500px;
-    height:500px;
-    background:radial-gradient(circle,rgba(255,255,255,.25),transparent 70%);
-    top:-100px;
-    left:-100px;
-    filter:blur(100px);
-    z-index:-1;
-}
-
-body::after{
-    content:"";
-    position:fixed;
-    width:500px;
-    height:500px;
-    background:radial-gradient(circle,rgba(255,255,255,.15),transparent 70%);
-    bottom:-120px;
-    right:-120px;
-    filter:blur(120px);
-    z-index:-1;
 }
 
 /* Tarjeta principal */
-.card{
-    border-radius:28px !important;
-    background:rgba(255,255,255,.85);
-    backdrop-filter:blur(18px);
-    border:1px solid rgba(255,255,255,.3) !important;
-    box-shadow:0 25px 60px rgba(0,0,0,.25);
-    transition:all .35s ease;
+.card {
+    border-radius: 24px !important;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 35px 70px rgba(0,0,0,.3);
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 50px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* título */
-h1{
-    color:#1a1f36;
-    font-size:2.3rem;
-    letter-spacing:-.02em;
+/* Título principal */
+h1 {
+    color: #1a1f36;
+    font-size: 2.2rem;
+    letter-spacing: -0.02em;
 }
 
-h1 i{
-    font-size:2rem;
-    background:linear-gradient(135deg,#5f7cff,#7a4dff);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+h1 i {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* subtitulo */
-.text-secondary{
-    color:#64748b !important;
+/* Subtítulo */
+.text-secondary {
+    color: #5a6d86 !important;
+    font-size: 1rem;
 }
 
-/* labels */
-.form-label{
-    color:#1e293b;
-    font-weight:600 !important;
-    letter-spacing:.3px;
-    font-size:.8rem !important;
-    display:flex;
-    align-items:center;
+/* Labels */
+.form-label {
+    color: #1e293b;
+    font-weight: 600 !important;
+    letter-spacing: 0.3px;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem !important;
+    display: flex;
+    align-items: center;
 }
 
-.form-label i{
-    width:20px;
+.form-label i {
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
 }
 
-/* inputs */
-.form-control,
-.form-select{
-    border:2px solid #e2e8f0;
-    border-radius:14px !important;
-    padding:.8rem 1rem;
-    font-size:1rem;
-    transition:all .25s ease;
-    background:white;
+/* Inputs, selects y textareas */
+.form-control, .form-select {
+    border: 2px solid #e2e8f0;
+    border-radius: 16px !important;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    background-color: #ffffff;
 }
 
-/* animacion hover input */
-.form-control:hover,
-.form-select:hover{
-    border-color:#a5b4fc;
+/* Efecto focus */
+.form-control:focus, .form-select:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+    outline: none;
 }
 
-/* focus */
-.form-control:focus,
-.form-select:focus{
-    border-color:#5f7cff;
-    box-shadow:0 0 0 4px rgba(95,124,255,.18);
-    transform:translateY(-1px);
+/* Placeholders */
+.form-control::placeholder {
+    color: #94a3b8;
+    font-weight: 400;
+    opacity: 0.8;
 }
 
-/* placeholders */
-.form-control::placeholder{
-    color:#94a3b8;
+/* Select personalizado */
+.form-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23475569' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 16px 12px;
 }
 
-/* textarea */
-textarea{
-    resize:none;
+/* Botones */
+.btn {
+    border-radius: 50px !important;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* botones */
-.btn{
-    border-radius:50px !important;
-    font-weight:600;
-    padding:.8rem 2.2rem;
-    transition:all .25s ease;
-    font-size:1rem;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
+.btn i {
+    font-size: 1.1rem;
+    transition: transform 0.2s ease;
 }
 
-.btn i{
-    margin-right:.4rem;
+.btn:hover i {
+    transform: scale(1.1);
 }
 
-/* cancelar */
-.btn-outline-secondary{
-    border:2px solid #cbd5e1;
-    color:#475569;
+/* Botón cancelar */
+.btn-outline-secondary {
+    border: 2px solid #cbd5e1;
+    color: #475569;
+    background: transparent;
 }
 
-.btn-outline-secondary:hover{
-    background:#f1f5f9;
-    transform:translateY(-2px);
+.btn-outline-secondary:hover {
+    background: #f1f5f9;
+    border-color: #94a3b8;
+    color: #1e293b;
+    transform: translateY(-2px);
 }
 
-/* enviar */
-.btn-primary{
-    background:linear-gradient(135deg,#5f7cff,#7a4dff);
-    border:none;
-    color:white;
-    box-shadow:0 8px 25px rgba(95,124,255,.5);
+.btn-outline-secondary:hover i {
+    color: #dc2626;
 }
 
-/* hover enviar */
-.btn-primary:hover{
-    transform:translateY(-3px) scale(1.03);
-    box-shadow:0 12px 35px rgba(95,124,255,.6);
+/* Botón enviar */
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
 }
 
-/* click */
-.btn:active{
-    transform:scale(.97) !important;
+.btn-primary:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.5);
 }
 
-/* espacio botones */
-.d-flex.gap-3{
-    gap:1rem !important;
+/* Efecto click */
+.btn:active {
+    transform: translateY(0) !important;
 }
 
-/* animación icono enviar */
-@keyframes bounce{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-4px)}
+/* Espaciado entre botones */
+.d-flex.gap-3 {
+    gap: 1rem !important;
 }
 
-.btn-primary:hover i{
-    animation:bounce .6s infinite;
+/* Responsive */
+@media (max-width: 768px) {
+    .card {
+        margin: 1rem;
+        padding: 1.5rem !important;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    h1 i {
+        font-size: 1.8rem;
+    }
+    
+    .d-flex.gap-3 {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
 }
 
-/* responsive */
-@media(max-width:768px){
-
-.card{
-    margin:1rem;
+@media (max-width: 576px) {
+    .card-body {
+        padding: 0.5rem !important;
+    }
+    
+    .form-control, .form-select {
+        padding: 0.6rem 1rem;
+    }
+    
+    .form-label {
+        font-size: 0.75rem !important;
+    }
 }
 
-h1{
-    font-size:1.9rem;
+/* Animación para los iconos */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
 }
 
-.d-flex.gap-3{
-    flex-direction:column;
+.btn-primary:hover i {
+    animation: bounce 0.5s ease infinite;
 }
 
-.btn{
-    width:100%;
+/* Tooltip efecto para iconos */
+[data-tooltip] {
+    position: relative;
+    cursor: help;
 }
 
+[data-tooltip]:before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.3rem 1rem;
+    background: #1e293b;
+    color: white;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+[data-tooltip]:hover:before {
+    opacity: 1;
+    visibility: visible;
 }
