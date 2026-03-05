@@ -1,0 +1,203 @@
+/* ==========================================================================
+   ESTILOS PERSONALIZADOS - Bootstrap + Font Awesome
+   ========================================================================== */
+
+/* Tipografía general */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background: linear-gradient(135deg,#5f7cff,#7a4dff);
+    min-height: 100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* luz decorativa fondo */
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,rgba(255,255,255,.25),transparent 70%);
+    top:-100px;
+    left:-100px;
+    filter:blur(100px);
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,rgba(255,255,255,.15),transparent 70%);
+    bottom:-120px;
+    right:-120px;
+    filter:blur(120px);
+    z-index:-1;
+}
+
+/* Tarjeta principal */
+.card{
+    border-radius:28px !important;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.3) !important;
+    box-shadow:0 25px 60px rgba(0,0,0,.25);
+    transition:all .35s ease;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 35px 70px rgba(0,0,0,.3);
+}
+
+/* título */
+h1{
+    color:#1a1f36;
+    font-size:2.3rem;
+    letter-spacing:-.02em;
+}
+
+h1 i{
+    font-size:2rem;
+    background:linear-gradient(135deg,#5f7cff,#7a4dff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* subtitulo */
+.text-secondary{
+    color:#64748b !important;
+}
+
+/* labels */
+.form-label{
+    color:#1e293b;
+    font-weight:600 !important;
+    letter-spacing:.3px;
+    font-size:.8rem !important;
+    display:flex;
+    align-items:center;
+}
+
+.form-label i{
+    width:20px;
+}
+
+/* inputs */
+.form-control,
+.form-select{
+    border:2px solid #e2e8f0;
+    border-radius:14px !important;
+    padding:.8rem 1rem;
+    font-size:1rem;
+    transition:all .25s ease;
+    background:white;
+}
+
+/* animacion hover input */
+.form-control:hover,
+.form-select:hover{
+    border-color:#a5b4fc;
+}
+
+/* focus */
+.form-control:focus,
+.form-select:focus{
+    border-color:#5f7cff;
+    box-shadow:0 0 0 4px rgba(95,124,255,.18);
+    transform:translateY(-1px);
+}
+
+/* placeholders */
+.form-control::placeholder{
+    color:#94a3b8;
+}
+
+/* textarea */
+textarea{
+    resize:none;
+}
+
+/* botones */
+.btn{
+    border-radius:50px !important;
+    font-weight:600;
+    padding:.8rem 2.2rem;
+    transition:all .25s ease;
+    font-size:1rem;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.btn i{
+    margin-right:.4rem;
+}
+
+/* cancelar */
+.btn-outline-secondary{
+    border:2px solid #cbd5e1;
+    color:#475569;
+}
+
+.btn-outline-secondary:hover{
+    background:#f1f5f9;
+    transform:translateY(-2px);
+}
+
+/* enviar */
+.btn-primary{
+    background:linear-gradient(135deg,#5f7cff,#7a4dff);
+    border:none;
+    color:white;
+    box-shadow:0 8px 25px rgba(95,124,255,.5);
+}
+
+/* hover enviar */
+.btn-primary:hover{
+    transform:translateY(-3px) scale(1.03);
+    box-shadow:0 12px 35px rgba(95,124,255,.6);
+}
+
+/* click */
+.btn:active{
+    transform:scale(.97) !important;
+}
+
+/* espacio botones */
+.d-flex.gap-3{
+    gap:1rem !important;
+}
+
+/* animación icono enviar */
+@keyframes bounce{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-4px)}
+}
+
+.btn-primary:hover i{
+    animation:bounce .6s infinite;
+}
+
+/* responsive */
+@media(max-width:768px){
+
+.card{
+    margin:1rem;
+}
+
+h1{
+    font-size:1.9rem;
+}
+
+.d-flex.gap-3{
+    flex-direction:column;
+}
+
+.btn{
+    width:100%;
+}
+
+}
