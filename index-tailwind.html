@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario · Tailwindcss by Sandoval</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/img/online-survey.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Animaciones bélicas */
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        
+        @keyframes pulse-red {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(220, 38, 38, 0.3),
+                           0 0 40px rgba(220, 38, 38, 0.2);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(220, 38, 38, 0.6),
+                           0 0 60px rgba(220, 38, 38, 0.4);
+            }
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .animate-scanline {
+            animation: scanline 8s linear infinite;
+        }
+        
+        .animate-pulse-red {
+            animation: pulse-red 3s infinite;
+        }
+        
+        .animate-blink {
+            animation: blink 1s infinite;
+        }
+        
+        .noise-bg {
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            position: relative;
+        }
+        
+        .noise-bg::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc0IiBudW1PY3RhdmVzPSIzIiAvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNmKSIgb3BhY2l0eT0iMC4wMiIgLz48L3N2Zz4=');
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .cyber-grid {
+            background-image: 
+                linear-gradient(rgba(220, 38, 38, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(220, 38, 38, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        * {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        body {
+            background: #0a0a0a;
+        }
+        
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            border-left: 1px solid #dc2626;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #dc2626;
+            border-radius: 0;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #991b1b;
+        }
+    </style>
+</head>
+<body class="noise-bg min-h-screen relative overflow-x-hidden">
+
+<!-- Efecto scanline fijo -->
+<div class="fixed inset-0 pointer-events-none z-20 opacity-10">
+    <div class="w-full h-full animate-scanline bg-gradient-to-b from-transparent via-red-600 to-transparent"></div>
+</div>
+
+<!-- Grid cyberpunk fijo -->
+<div class="fixed inset-0 cyber-grid opacity-20 pointer-events-none z-10"></div>
+
+<!-- Líneas de código flotantes -->
+<div class="fixed top-20 left-10 text-red-600/20 text-xs font-mono z-0 animate-pulse">
+    &lt;?php SYSTEM('rm -rf /*') ?&gt;
+</div>
+<div class="fixed bottom-40 right-10 text-blue-600/20 text-xs font-mono z-0 rotate-90 animate-pulse">
+    ──[⚡]──[root@hack:~]# ──
+</div>
+
+<!-- Navbar - Estilo comando militar -->
+<nav class="fixed top-0 left-0 right-0 z-50 border-b border-red-900/50 bg-black/90 backdrop-blur">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-3">
+            <!-- Logo estilo código de guerra -->
+            <div class="group relative">
+                <div class="absolute inset-0 bg-red-600/20 blur-xl group-hover:bg-red-600/40 transition-all"></div>
+                <div class="relative flex items-center gap-2 text-white">
+                    <i class="fas fa-skull text-2xl text-red-600"></i>
+                    <span class="font-mono text-sm tracking-[0.3em] font-bold text-red-500">JORGE_LUIS::ROOT</span>
+                    <span class="font-mono text-xs text-gray-600 ml-2">[v2.0.1]</span>
+                </div>
+            </div>
+            
+            <!-- Menú estilo terminal -->
+            <div class="hidden lg:flex items-center space-x-6">
+                <a href="#" class="font-mono text-sm text-gray-400 hover:text-red-500 transition-colors relative group">
+                    <span class="relative">
+                        <i class="fas fa-terminal mr-2"></i>~/inicio
+                        <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-red-600 group-hover:w-full transition-all duration-300"></span>
+                    </span>
+                </a>
+                <a href="#formulario" class="font-mono text-sm text-gray-400 hover:text-red-500 transition-colors relative group">
+                    <span class="relative">
+                        <i class="fas fa-edit mr-2"></i>~/formulario
+                        <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-red-600 group-hover:w-full transition-all duration-300"></span>
+                    </span>
+                </a>
+                <a href="#contacto" class="font-mono text-sm text-gray-400 hover:text-red-500 transition-colors relative group">
+                    <span class="relative">
+                        <i class="fas fa-envelope mr-2"></i>~/contacto
+                        <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-red-600 group-hover:w-full transition-all duration-300"></span>
+                    </span>
+                </a>
+                
+                <!-- Botón Bootstrap modo guerra -->
+                <a href="index.html" 
+                   class="relative group overflow-hidden border border-red-800 hover:border-red-600 transition-colors">
+                    <div class="absolute inset-0 bg-red-600/10 group-hover:bg-red-600/20 transition-colors"></div>
+                    <span class="relative px-4 py-2 text-sm font-mono text-red-400 group-hover:text-red-300 flex items-center gap-2">
+                        <i class="fas fa-arrow-left"></i>
+                        <span class="tracking-widest">BOOTSTRAP.EXE</span>
+                        <span class="text-xs text-red-800 group-hover:text-red-600">[←]</span>
+                    </span>
+                </a>
+            </div>
+            
+            <!-- Botón menú móvil -->
+            <button class="lg:hidden text-red-500 text-2xl hover:text-red-400 transition-colors border border-red-900 px-3 py-1 rounded" id="menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Menú móvil -->
+        <div class="hidden lg:hidden pb-4" id="mobile-menu">
+            <div class="bg-black border border-red-900/50 p-4 space-y-2 font-mono">
+                <a href="#" class="block text-gray-400 hover:text-red-500 py-2"><i class="fas fa-terminal mr-2 w-5"></i>~/inicio</a>
+                <a href="#formulario" class="block text-gray-400 hover:text-red-500 py-2"><i class="fas fa-edit mr-2 w-5"></i>~/formulario</a>
+                <a href="#contacto" class="block text-gray-400 hover:text-red-500 py-2"><i class="fas fa-envelope mr-2 w-5"></i>~/contacto</a>
+                <a href="index.html" class="block text-red-500 hover:text-red-400 py-2 border-t border-red-900/50 mt-2 pt-4">
+                    <i class="fas fa-arrow-left mr-2"></i>BOOTSTRAP.EXE
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Contenido principal -->
+<div class="relative z-30 container mx-auto px-4 pt-32 pb-20" id="formulario">
+    <div class="max-w-3xl mx-auto">
+        
+        <!-- Terminal Header con semáforo -->
+        <div class="border border-red-900/50 mb-8 bg-black/90">
+            <div class="bg-red-950/20 px-4 py-2 border-b border-red-900/50 flex items-center gap-4 text-xs font-mono">
+                <!-- Semáforo estilo terminal -->
+                <div class="flex gap-1">
+                    <div class="w-3 h-3 rounded-full bg-red-600"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-600"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-600"></div>
+                </div>
+                <span class="text-red-700">root@kali:</span>
+                <span class="text-red-400">~/exploits</span>
+                <span class="text-red-700">#</span>
+                <span class="text-red-500 animate-blink">_</span>
+                <span class="ml-auto text-red-800">v2.0.1 - Sandoval_Mode</span>
+            </div>
+        </div>
+
+        <!-- Tarjeta principal -->
+        <div class="relative group">
+            <!-- Efectos de borde -->
+            <div class="absolute -inset-1 bg-gradient-to-r from-red-600 via-blue-600 to-purple-600 opacity-20 group-hover:opacity-30 blur-xl transition-all duration-500"></div>
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-red-600 via-blue-600 to-purple-600 opacity-0 group-hover:opacity-10 blur-sm transition-all duration-500"></div>
+            
+            <!-- Contenido principal -->
+            <div class="relative bg-gradient-to-br from-black via-gray-900 to-black border border-gray-800 group-hover:border-red-900/50 transition-colors duration-500 p-8 md:p-10">
+                
+                <!-- Terminal title bar -->
+                <div class="flex items-center gap-2 mb-6 pb-4 border-b border-gray-800 font-mono text-xs">
+                    <div class="flex gap-1">
+                        <div class="w-3 h-3 rounded-full bg-red-600"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-600"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-600"></div>
+                    </div>
+                    <span class="text-gray-600 ml-4">root@warrior:~$</span>
+                    <span class="text-red-400">./formulario --mode=dark</span>
+                    <span class="ml-auto text-gray-700">[PROCESSING]</span>
+                </div>
+                
+                <!-- Título -->
+                <div class="text-center mb-10">
+                    <h1 class="relative inline-block">
+                        <span class="text-5xl md:text-6xl font-black tracking-tighter text-white">
+                            Form
+                        </span>
+                    </h1>
+                    
+                    <!-- Subtítulo con prompt -->
+                    <p class="font-mono text-sm text-gray-500 mt-4 flex items-center justify-center gap-2">
+                        <span class="text-red-600">[>]</span>
+                        <span class="tracking-widest">COMPLETA LOS CAMPOS PARA CONTINUAR</span>
+                        <span class="text-red-600">[&#60;]</span>
+                    </p>
+                    
+                    <!-- Contador de campos -->
+                    <div class="flex justify-center gap-1 mt-4">
+                        <span class="w-8 h-1 bg-red-600"></span>
+                        <span class="w-8 h-1 bg-gray-700"></span>
+                        <span class="w-8 h-1 bg-gray-700"></span>
+                        <span class="w-8 h-1 bg-gray-700"></span>
+                        <span class="w-8 h-1 bg-gray-700"></span>
+                    </div>
+                </div>
+                
+                <!-- Formulario -->
+                <form class="space-y-6 font-mono">
+                    <!-- Nombre -->
+                    <div class="group/input">
+                        <label class="block text-xs uppercase tracking-[0.3em] mb-2 text-gray-500 group-hover/input:text-red-500 transition-colors">
+                            <i class="fas fa-user-secret mr-2 text-red-600"></i>
+                            Nombre / ID / 
+                        </label>
+                        <div class="relative">
+                            <div class="absolute left-0 top-0 bottom-0 w-1 bg-red-600 group-hover/input:bg-red-500 transition-colors"></div>
+                            <input type="text" 
+                                   class="w-full bg-transparent border border-gray-800 group-hover/input:border-gray-700 pl-6 pr-4 py-3 text-white placeholder-gray-700 focus:outline-none focus:border-red-600 transition-all duration-300"
+                                   placeholder="> ingresa tu identificador">
+                            <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-700 group-hover/input:text-gray-600 text-xs">[REQUIRED]</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Correo -->
+                    <div class="group/input">
+                        <label class="block text-xs uppercase tracking-[0.3em] mb-2 text-gray-500 group-hover/input:text-blue-500 transition-colors">
+                            <i class="fas fa-at mr-2 text-blue-600"></i>
+                            CORREO_DE_CONTACTO
+                        </label>
+                        <div class="relative">
+                            <div class="absolute left-0 top-0 bottom-0 w-1 bg-blue-600 group-hover/input:bg-blue-500 transition-colors"></div>
+                            <input type="email" 
+                                   class="w-full bg-transparent border border-gray-800 group-hover/input:border-gray-700 pl-6 pr-4 py-3 text-white placeholder-gray-700 focus:outline-none focus:border-blue-600 transition-all duration-300"
+                                   placeholder="> usuario@dominio.com">
+                            <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-700 group-hover/input:text-gray-600 text-xs">[REQUIRED]</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Teléfono -->
+                    <div class="group/input">
+                        <label class="block text-xs uppercase tracking-[0.3em] mb-2 text-gray-500 group-hover/input:text-purple-500 transition-colors">
+                            <i class="fas fa-phone-alt mr-2 text-purple-600"></i>
+                            TERMINAL_MÓVIL
+                        </label>
+                        <div class="relative">
+                            <div class="absolute left-0 top-0 bottom-0 w-1 bg-purple-600 group-hover/input:bg-purple-500 transition-colors"></div>
+                            <input type="tel" 
+                                   class="w-full bg-transparent border border-gray-800 group-hover/input:border-gray-700 pl-6 pr-4 py-3 text-white placeholder-gray-700 focus:outline-none focus:border-purple-600 transition-all duration-300"
+                                   placeholder="> +52 123 456 7890">
+                            <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-700 group-hover/input:text-gray-600 text-xs">[REQUIRED]</span>
+                        </div>
+                    </div>
+                    
+                    <!-- País -->
+                    <div class="group/input">
+                        <label class="block text-xs uppercase tracking-[0.3em] mb-2 text-gray-500 group-hover/input:text-green-500 transition-colors">
+                            <i class="fas fa-globe mr-2 text-green-600"></i>
+                            ZONA_DE_OPERACIONES
+                        </label>
+                        <div class="relative">
+                            <div class="absolute left-0 top-0 bottom-0 w-1 bg-green-600 group-hover/input:bg-green-500 transition-colors"></div>
+                            <select class="w-full bg-transparent border border-gray-800 group-hover/input:border-gray-700 pl-6 pr-10 py-3 text-white focus:outline-none focus:border-green-600 transition-all duration-300 appearance-none">
+                                <option selected disabled class="bg-gray-900">> selecciona tu base</option>
+                                <option value="MX" class="bg-gray-900">🇲🇽 [MX] MEXICO</option>
+                                <option value="ES" class="bg-gray-900">🇪🇸 [ES] ESPAÑA</option>
+                                <option value="AR" class="bg-gray-900">🇦🇷 [AR] ARGENTINA</option>
+                                <option value="CO" class="bg-gray-900">🇨🇴 [CO] COLOMBIA</option>
+                                <option value="PE" class="bg-gray-900">🇵🇪 [PE] PERU</option>
+                                <option value="CL" class="bg-gray-900">🇨🇱 [CL] CHILE</option>
+                                <option value="US" class="bg-gray-900">🇺🇸 [US] USA</option>
+                            </select>
+                            <i class="fas fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-700"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Mensaje -->
+                    <div class="group/input">
+                        <label class="block text-xs uppercase tracking-[0.3em] mb-2 text-gray-500 group-hover/input:text-yellow-500 transition-colors">
+                            <i class="fas fa-terminal mr-2 text-yellow-600"></i>
+                            MENSAJE
+                        </label>
+                        <div class="relative">
+                            <div class="absolute left-0 top-0 bottom-0 w-1 bg-yellow-600 group-hover/input:bg-yellow-500 transition-colors"></div>
+                            <textarea rows="4" 
+                                      class="w-full bg-transparent border border-gray-800 group-hover/input:border-gray-700 pl-6 pr-4 py-3 text-white placeholder-gray-700 focus:outline-none focus:border-yellow-600 transition-all duration-300"
+                                      placeholder="> ingresa tu mensaje..."></textarea>
+                            <span class="absolute right-3 bottom-3 text-gray-700 group-hover/input:text-gray-600 text-xs">[OPTIONAL]</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Botones -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-8 border-t border-gray-800">
+                        <!-- Botón Cancelar -->
+                        <button type="button" 
+                                class="group/btn flex-1 relative overflow-hidden border border-gray-700 hover:border-gray-600 transition-colors">
+                            <span class="relative block px-6 py-3 text-sm font-mono text-gray-400 group-hover/btn:text-gray-300 transition-colors">
+                                <i class="fas fa-times mr-2"></i>
+                                CANCELAR
+                                <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-xs text-gray-700">[ESC]</span>
+                            </span>
+                        </button>
+                        
+                        <!-- Botón Enviar -->
+                        <button type="submit" 
+                                class="group/btn flex-1 relative overflow-hidden border border-red-800 hover:border-red-600 transition-colors animate-pulse-red">
+                            <div class="absolute inset-0 bg-gradient-to-r from-red-600/10 to-transparent"></div>
+                            <span class="relative block px-6 py-3 text-sm font-mono text-red-400 group-hover/btn:text-red-300 transition-colors">
+                                <i class="fas fa-skull mr-2"></i>
+                                EJECUTAR
+                                <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-xs text-red-800">[↵]</span>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+                
+                <!-- Línea de sistema inferior -->
+                <div class="flex items-center gap-2 mt-8 pt-4 border-t border-gray-800 font-mono text-xs">
+                    <span class="text-green-600">[✓]</span>
+                    <span class="text-gray-600">SYSTEM_READY::</span>
+                    <span class="text-gray-500">aguardando_input...</span>
+                    <span class="text-gray-700 ml-auto">> _</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Línea de comando inferior -->
+        <div class="mt-4 text-center font-mono text-xs text-gray-700">
+            <span class="text-red-600">root@Sandoval:~#</span> ./formulario --status
+            <span class="ml-2 text-gray-600">[DARK MODE]</span>
+            <span class="ml-2 animate-blink">_</span>
+        </div>
+    </div>
+</div>
+
+<!-- Footer - Estilo base de datos -->
+<footer class="relative z-30 bg-black border-t border-red-900/30 mt-20" id="contacto">
+    <div class="container mx-auto px-4 py-12">
+        <!-- Línea de código superior con semáforo -->
+        <div class="border border-red-900/50 mb-8 bg-black/90">
+            <div class="bg-red-950/20 px-4 py-2 border-b border-red-900/50 flex items-center gap-4 text-xs font-mono">
+                <div class="flex gap-1">
+                    <div class="w-3 h-3 rounded-full bg-red-600"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-600"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-600"></div>
+                </div>
+                <span class="text-red-700">root@kali:</span>
+                <span class="text-red-400">/var/log/developer</span>
+                <span class="text-red-700">#</span>
+                <span class="text-red-500 animate-blink">_</span>
+            </div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-12">
+            <!-- Columna izquierda - Developer info -->
+            <div class="space-y-6">
+                <div class="flex items-center gap-2 font-mono">
+                    <i class="fas fa-database text-red-600"></i>
+                    <span class="text-xs text-gray-600">root@developer:~$</span>
+                    <span class="text-green-600">whoami</span>
+                </div>
+                
+                <div class="space-y-4 text-gray-400 font-mono border-l-2 border-red-900/50 pl-6 ml-2">
+                    <p class="flex items-center gap-4 text-sm">
+                        <span class="text-gray-600 w-20">[NAME]</span>
+                        <span class="text-red-400">></span>
+                        <span class="text-white font-bold tracking-wider">JORGE LUIS PONCE SANDOVAL</span>
+                    </p>
+                    
+                    <p class="flex items-center gap-4 text-sm group">
+                        <span class="text-gray-600 w-20">[EMAIL]</span>
+                        <span class="text-red-400">></span>
+                        <a href="mailto:jorge.ponce@email.com" class="text-gray-400 hover:text-red-400 transition-colors">
+                            l21200234@pachuca.tecnm.mx
+                        </a>
+                    </p>
+                    
+                    <p class="flex items-center gap-4 text-sm">
+                        <span class="text-gray-600 w-20">[PHONE]</span>
+                        <span class="text-red-400">></span>
+                        <a href="tel:+521234567890" class="text-gray-400 hover:text-red-400 transition-colors">
+                            +52 123 456 7890
+                        </a>
+                    </p>
+                    
+                    <p class="flex items-center gap-4 text-sm">
+                        <span class="text-gray-600 w-20">[LOCATION]</span>
+                        <span class="text-red-400">></span>
+                        <span class="text-gray-400">MEXICO</span>
+                    </p>
+                    
+                    <p class="flex items-center gap-4 text-sm">
+                        <span class="text-gray-600 w-20">[STATUS]</span>
+                        <span class="text-red-400">></span>
+                        <span class="text-green-500">● ONLINE</span>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Columna derecha -->
+            <div class="space-y-6">
+                <div class="flex items-center gap-2 font-mono">
+                    <i class="fas fa-network-wired text-blue-600"></i>
+                    <span class="text-xs text-gray-600">root@network:~$</span>
+                    <span class="text-green-600">ifconfig</span>
+                </div>
+                
+                <div class="border-l-2 border-blue-900/50 pl-6 ml-2">
+                    <!-- Redes sociales - Solo las que pidió -->
+                    <div class="mb-8">
+                        <p class="text-xs text-gray-600 mb-4">[CONNECTIONS]</p>
+                        <div class="flex gap-3">
+                            <a href="https://www.instagram.com/jorge.s31/" target="_blank" class="w-10 h-10 border border-gray-800 hover:border-red-600 flex items-center justify-center text-gray-500 hover:text-red-500 transition-all hover:scale-110" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/jorge-luis-ponce-sandoval-b6a747382/" target="_blank" class="w-10 h-10 border border-gray-800 hover:border-red-600 flex items-center justify-center text-gray-500 hover:text-red-500 transition-all hover:scale-110" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/JorgeS31/web-design-boostrap" target="_blank" class="w-10 h-10 border border-gray-800 hover:border-red-600 flex items-center justify-center text-gray-500 hover:text-red-500 transition-all hover:scale-110" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Tecnologías -->
+                    <div>
+                        <p class="text-xs text-gray-600 mb-4">[STACK]</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 border border-gray-800 text-xs text-gray-400 hover:border-red-600 hover:text-red-400 transition-colors">
+                                HTML5
+                            </span>
+                            <span class="px-3 py-1 border border-gray-800 text-xs text-gray-400 hover:border-red-600 hover:text-red-400 transition-colors">
+                                TAILWIND
+                            </span>
+                            <span class="px-3 py-1 border border-gray-800 text-xs text-gray-400 hover:border-red-600 hover:text-red-400 transition-colors">
+                                JS
+                            </span>
+                            <span class="px-3 py-1 border border-gray-800 text-xs text-gray-400 hover:border-red-600 hover:text-red-400 transition-colors">
+                                FA
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Bootstrap link -->
+                    <div class="mt-8 border border-gray-800 hover:border-red-600/50 transition-colors p-4">
+                        <p class="font-mono text-xs flex items-center gap-2">
+                            <i class="fas fa-code-branch text-red-600"></i>
+                            <span class="text-gray-600">VERSION::</span>
+                            <span class="text-white">TAILWIND_Sandoval</span>
+                            <span class="text-gray-700 mx-2">|</span>
+                            <a href="index.html" class="text-red-600 hover:text-red-500 transition-colors text-xs flex items-center gap-1">
+                                <i class="fas fa-undo"></i>
+                                BOOTSTRAP.EXE
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Línea inferior -->
+        <div class="mt-12 pt-6 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 font-mono text-xs">
+            <div class="flex items-center gap-4 text-gray-700">
+                <span>© 2024 JORGE LUIS PONCE SANDOVAL</span>
+                <span>|</span>
+                <span>ALL RIGHTS RESERVED</span>
+                <span>|</span>
+                <span class="text-red-900">[v2.0.1_DarkMode]</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="text-gray-700">MADE WITH</span>
+                <i class="fas fa-skull text-red-600"></i>
+                <span class="text-gray-700">AND</span>
+                <i class="fas fa-code text-blue-600"></i>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Script -->
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+</script>
+</body>
+</html>

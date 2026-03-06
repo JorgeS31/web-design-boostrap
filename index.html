@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Completa tu Información · Bootstrap + Font Awesome</title>
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/img/online-survey.png">
-
     
     <!-- Bootstrap 5 CSS -->
     <link rel="stylesheet" href="./assets/css/boostrap.min.css">
@@ -18,70 +19,296 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Estilos personalizados -->
-    <link rel="stylesheet" href="assets/css/styles.css">
-    
     <style>
-        /* Estilos adicionales para navbar y footer */
-        .navbar-brand {
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-        
-        .navbar-brand i {
-            color: #0d6efd;
-        }
-        
-        .footer {
-            background-color: #f8f9fa;
-            border-top: 1px solid #dee2e6;
-        }
-        
-        .developer-info {
-            font-size: 0.95rem;
-        }
-        
-        .developer-info i {
-            color: #0d6efd;
-            width: 20px;
-            text-align: center;
-            margin-right: 8px;
-        }
-        
-        .social-icons a {
-            color: #6c757d;
-            transition: color 0.3s ease;
-            font-size: 1.2rem;
-        }
-        
-        .social-icons a:hover {
-            color: #0d6efd;
+        /* Estilos mejorados con más color */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         body {
-            padding-top: 76px; /* Para compensar el navbar fijo */
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
         }
         
+        /* Navbar mejorado */
+        .navbar {
+            background: linear-gradient(to right, #1a1a2e, #16213e) !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        .navbar-brand {
+            color: #fff !important;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+        
+        .navbar-brand i {
+            color: #ffd700 !important;
+        }
+        
+        .navbar-nav .nav-link {
+            color: rgba(255,255,255,0.8) !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: #ffd700 !important;
+            transform: translateY(-2px);
+        }
+        
+        .navbar-nav .nav-link.active {
+            color: #ffd700 !important;
+        }
+        
+        .navbar-nav .nav-link.text-primary {
+            color: #ffd700 !important;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 0.5rem 1rem !important;
+        }
+        
+        .navbar-nav .nav-link.text-primary:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        /* Tarjeta principal */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: none !important;
+            border-radius: 20px !important;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3) !important;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-body {
+            padding: 2.5rem !important;
+        }
+        
+        /* Títulos */
+        h1 {
+            color: #1a1a2e;
+            font-size: 2.2rem;
+        }
+        
+        h1 i {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .text-secondary {
+            color: #666 !important;
+            font-size: 1.1rem;
+        }
+        
+        /* Formulario */
+        .form-label {
+            color: #333;
+            font-weight: 600 !important;
+            font-size: 0.85rem !important;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-label i {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .form-control, .form-select {
+            border: 2px solid #e0e0e0 !important;
+            border-radius: 12px !important;
+            padding: 0.8rem 1.2rem !important;
+            font-size: 1rem !important;
+            transition: all 0.3s ease !important;
+            background: white !important;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: #667eea !important;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1) !important;
+            outline: none;
+        }
+        
+        .form-control::placeholder {
+            color: #999;
+            font-weight: 300;
+        }
+        
+        /* Botones */
+        .btn {
+            border-radius: 12px !important;
+            font-weight: 600 !important;
+            padding: 0.8rem 2rem !important;
+            transition: all 0.3s ease !important;
+            border: none !important;
+        }
+        
+        .btn-outline-secondary {
+            background: #f5f5f5 !important;
+            color: #666 !important;
+        }
+        
+        .btn-outline-secondary:hover {
+            background: #e0e0e0 !important;
+            color: #333 !important;
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2) !important;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+        
+        /* Footer mejorado */
+        .footer {
+            background: linear-gradient(to right, #1a1a2e, #16213e) !important;
+            color: white !important;
+            border-top: none !important;
+            margin-top: 5rem !important;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+        }
+        
+        .footer h5 {
+            color: #ffd700 !important;
+            font-weight: 700;
+        }
+        
+        .footer h5 i {
+            color: #ffd700 !important;
+        }
+        
+        .footer .developer-info {
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .footer .developer-info i {
+            color: #ffd700 !important;
+        }
+        
+        .footer .developer-info a {
+            color: rgba(255,255,255,0.8) !important;
+            transition: color 0.3s ease;
+        }
+        
+        .footer .developer-info a:hover {
+            color: #ffd700 !important;
+        }
+        
+        .footer .social-icons a {
+            color: white !important;
+            background: rgba(255,255,255,0.1);
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .footer .social-icons a:hover {
+            background: #ffd700;
+            color: #1a1a2e !important;
+            transform: translateY(-3px);
+        }
+        
+        .footer .badge {
+            background: rgba(255,255,255,0.1) !important;
+            color: white !important;
+            padding: 0.6rem 1rem !important;
+            font-weight: 500;
+        }
+        
+        .footer .badge.bg-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2) !important;
+        }
+        
+        .footer hr {
+            background: rgba(255,255,255,0.2);
+            opacity: 1;
+            height: 2px;
+        }
+        
+        .footer .text-muted {
+            color: rgba(255,255,255,0.6) !important;
+        }
+        
+        .footer .border {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.2) !important;
+        }
+        
+        .footer .border a {
+            color: #ffd700 !important;
+        }
+        
+        .footer .border a:hover {
+            text-decoration: underline !important;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
             body {
-                padding-top: 66px;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            }
+            
+            .card-body {
+                padding: 1.5rem !important;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .footer .social-icons a {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
             }
         }
     </style>
 </head>
-
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm fixed-top">
+<!-- Navbar mejorado -->
+<nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
         <a class="navbar-brand" href="#">
             <i class="fas fa-laptop-code me-2"></i>
             Jorge Luis Ponce Sandoval
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
+            <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
@@ -100,6 +327,11 @@
                         <i class="fas fa-envelope me-1"></i>Contacto
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-primary" href="index-tailwind.html">
+                        <i class="fas fa-paint-brush me-1"></i>Ver Tailwind
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
@@ -107,76 +339,55 @@
 
 <!-- Contenido principal -->
 <div class="container" id="formulario">
-    <div class="row justify-content-center min-vh-100 align-items-center">
-
+    <div class="row justify-content-center align-items-center" style="min-height: 100vh; padding: 100px 0;">
         <div class="col-12 col-md-8 col-lg-6">
-
-            <!-- Tarjeta -->
-            <div class="card border-0 shadow-lg p-4 p-md-5">
-
+            <!-- Tarjeta principal mejorada -->
+            <div class="card">
                 <div class="card-body">
-
-                    <!-- Título -->
-                    <h1 class="text-center mb-2 fw-bold">
-                        <i class="fas fa-edit text-primary me-2"></i>
-                        Completa tu Información
+                    <!-- Título principal -->
+                    <h1 class="text-center mb-3 fw-bold">
+                        <i class="fas fa-edit me-2"></i>Completa tu Información
                     </h1>
-
+                    
                     <!-- Subtítulo -->
-                    <p class="text-center text-secondary mb-4">
-                        <i class="fas fa-info-circle me-1"></i>
-                        Por favor completa los siguientes datos:
+                    <p class="text-center text-secondary mb-5">
+                        <i class="fas fa-info-circle me-1"></i>Por favor completa los siguientes datos:
                     </p>
 
                     <!-- Formulario -->
                     <form>
-
-                        <!-- Nombre -->
+                        <!-- Nombre Completo -->
                         <div class="mb-4">
-                            <label for="nombre" class="form-label fw-semibold text-uppercase small">
-                                <i class="fas fa-user-circle me-2 text-primary"></i>
-                                Nombre Completo
+                            <label for="nombre" class="form-label">
+                                <i class="fas fa-user-circle me-2"></i>NOMBRE COMPLETO
                             </label>
-
-                            <input type="text"
-                                   class="form-control form-control-lg"
-                                   id="nombre"
-                                   placeholder="Ingresa tu nombre">
+                            <input type="text" class="form-control form-control-lg" 
+                                   id="nombre" placeholder="Ingresa tu nombre completo">
                         </div>
 
                         <!-- Correo -->
                         <div class="mb-4">
-                            <label for="email" class="form-label fw-semibold text-uppercase small">
-                                <i class="fa-solid fa-envelope me-2 text-primary"></i>
-                                Ingresa tu correo
+                            <label for="email" class="form-label">
+                                <i class="fa-solid fa-envelope me-2"></i>CORREO ELECTRÓNICO
                             </label>
-
-                            <input type="email"
-                                   class="form-control form-control-lg"
-                                   id="email"
-                                   placeholder="Ingresa tu correo">
+                            <input type="email" class="form-control form-control-lg" 
+                                   id="email" placeholder="ejemplo@correo.com">
                         </div>
 
                         <!-- Teléfono -->
                         <div class="mb-4">
-                            <label for="telefono" class="form-label fw-semibold text-uppercase small">
-                                <i class="fa-solid fa-phone-flip me-2 text-primary"></i>
-                                Ingresa tu teléfono
+                            <label for="telefono" class="form-label">
+                                <i class="fa-solid fa-phone-flip me-2"></i>TELÉFONO
                             </label>
-
-                            <input type="tel"
-                                   class="form-control form-control-lg"
-                                   id="telefono"
-                                   placeholder="Ingresa tu teléfono">
+                            <input type="tel" class="form-control form-control-lg" 
+                                   id="telefono" placeholder="+52 123 456 7890">
                         </div>
 
                         <!-- País -->
                         <div class="mb-4">
-                            <label for="pais" class="form-label fw-semibold text-uppercase small">
-                                <i class="fas fa-globe-americas me-2 text-primary"></i>
-                                Selecciona tu País
+                            <label for="pais" class="form-label">
+                                <i class="fas fa-globe-americas me-2"></i>PAÍS
                             </label>
-
                             <select class="form-select form-select-lg" id="pais">
                                 <option selected disabled>— Selecciona un país —</option>
                                 <option value="MX">🇲🇽 México</option>
@@ -190,116 +401,103 @@
                         </div>
 
                         <!-- Mensaje -->
-                        <div class="mb-4">
-                            <label for="mensaje" class="form-label fw-semibold text-uppercase small">
-                                <i class="fas fa-comment-dots me-2 text-primary"></i>
-                                Mensaje
+                        <div class="mb-5">
+                            <label for="mensaje" class="form-label">
+                                <i class="fas fa-comment-dots me-2"></i>MENSAJE
                             </label>
-
-                            <textarea class="form-control form-control-lg"
-                                      id="mensaje"
-                                      rows="4"
-                                      placeholder="Escribe tu mensaje..."></textarea>
+                            <textarea class="form-control form-control-lg" id="mensaje" 
+                                      rows="4" placeholder="Escribe tu mensaje aquí..."></textarea>
                         </div>
 
                         <!-- Botones -->
                         <div class="d-flex gap-3 justify-content-end">
-
-                            <button type="button"
-                                    class="btn btn-outline-secondary btn-lg px-5">
-
-                                <i class="fas fa-times-circle me-2"></i>
-                                Cancelar
+                            <button type="button" class="btn btn-outline-secondary btn-lg px-5">
+                                <i class="fas fa-times-circle me-2"></i>Cancelar
                             </button>
-
-                            <button type="submit"
-                                    class="btn btn-primary btn-lg px-5">
-
-                                <i class="fas fa-paper-plane me-2"></i>
-                                Enviar
+                            <button type="submit" class="btn btn-primary btn-lg px-5">
+                                <i class="fas fa-paper-plane me-2"></i>Enviar
                             </button>
-
                         </div>
-
                     </form>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
 </div>
 
-<!-- Footer con datos del programador -->
-<footer class="footer py-4 mt-5" id="contacto">
+<!-- Footer mejorado -->
+<footer class="footer py-5" id="contacto">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <h5 class="fw-bold mb-3">
-                    <i class="fas fa-code text-primary me-2"></i>Desarrollado por:
+            <!-- Primera columna -->
+            <div class="col-md-6 mb-4 mb-md-0">
+                <h5 class="fw-bold mb-4">
+                    <i class="fas fa-code me-2"></i>Desarrollado por:
                 </h5>
                 <div class="developer-info">
-                    <p class="mb-2">
-                        <i class="fas fa-user"></i>
+                    <p class="mb-3">
+                        <i class="fas fa-user me-2"></i>
                         <strong>Jorge Luis Ponce Sandoval</strong>
                     </p>
-                    <p class="mb-2">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:jorge.ponce@email.com" class="text-decoration-none text-secondary">
-                            jorge.ponce@email.com
-                        </a>
+                    <p class="mb-3">
+                        <i class="fas fa-envelope me-2"></i>
+                        <a href="mailto:jorge.ponce@email.com">jorge.ponce@email.com</a>
                     </p>
-                    <p class="mb-2">
-                        <i class="fas fa-phone"></i>
-                        <a href="tel:+521234567890" class="text-decoration-none text-secondary">
-                            +52 123 456 7890
-                        </a>
+                    <p class="mb-3">
+                        <i class="fas fa-phone me-2"></i>
+                        <a href="tel:+521234567890">+52 123 456 7890</a>
                     </p>
-                    <p class="mb-2">
-                        <i class="fas fa-map-marker-alt"></i>
+                    <p class="mb-3">
+                        <i class="fas fa-map-marker-alt me-2"></i>
                         México
                     </p>
                 </div>
             </div>
+            
+            <!-- Segunda columna -->
             <div class="col-md-6">
-                <h5 class="fw-bold mb-3">
-                    <i class="fas fa-link text-primary me-2"></i>Redes Sociales
+                <h5 class="fw-bold mb-4">
+                    <i class="fas fa-link me-2"></i>Redes Sociales
                 </h5>
-                <div class="social-icons mb-3">
-                    <a href="#" class="me-3" title="GitHub" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="#" class="me-3" title="LinkedIn" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="#" class="me-3" title="Twitter" target="_blank">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="me-3" title="Portafolio" target="_blank">
-                        <i class="fas fa-briefcase"></i>
-                    </a>
+                <div class="social-icons mb-4">
+                    <a href="#" class="me-2" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" class="me-2" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="me-2" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="me-2" title="Portafolio"><i class="fas fa-briefcase"></i></a>
                 </div>
-                <h5 class="fw-bold mb-3 mt-4">
-                    <i class="fas fa-cog text-primary me-2"></i>Tecnologías
+                
+                <h5 class="fw-bold mb-3">
+                    <i class="fas fa-cog me-2"></i>Tecnologías
                 </h5>
-                <div>
+                <div class="mb-4">
                     <span class="badge bg-primary me-2">HTML5</span>
                     <span class="badge bg-primary me-2">CSS3</span>
                     <span class="badge bg-primary me-2">Bootstrap 5</span>
                     <span class="badge bg-primary me-2">Font Awesome</span>
                 </div>
+                
+                <!-- Badge de Tailwind -->
+                <div class="p-3 rounded border">
+                    <p class="small mb-0">
+                        <i class="fas fa-paint-brush me-1" style="color: #ffd700;"></i>
+                        Versión con <strong>Bootstrap</strong> · 
+                        <a href="index-tailwind.html" style="color: #ffd700; text-decoration: none; font-weight: 600;">
+                            Cambiar a Tailwind <i class="fas fa-arrow-right ms-1"></i>
+                        </a>
+                    </p>
+                </div>
             </div>
         </div>
+        
         <hr class="my-4">
+        
         <div class="row">
             <div class="col-12 text-center">
-                <p class="mb-0 text-muted">
+                <p class="mb-0">
                     <i class="far fa-copyright me-1"></i>2024 Jorge Luis Ponce Sandoval - Todos los derechos reservados
                 </p>
-                <p class="mb-0 text-muted small mt-2">
-                    <i class="fas fa-heart text-danger"></i> Diseñado con Bootstrap y Font Awesome
+                <p class="mb-0 small mt-2">
+                    <i class="fas fa-heart text-danger"></i> Diseñado con Bootstrap :)
                 </p>
             </div>
         </div>
@@ -308,6 +506,5 @@
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
